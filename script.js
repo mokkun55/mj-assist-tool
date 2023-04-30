@@ -48,19 +48,19 @@ function setVariableplus(jikaze) {                                   //ここは
     switch (jikaze) {
         case 'ton':
             numberInput = document.getElementById('number_input_ton');
-            point_ton += parseInt(numberInput.value);
+            point_ton += parseInt(numberInput.value)*100;
             break;
         case 'nan':
             numberInput = document.getElementById('number_input_nan');
-            point_nan += parseInt(numberInput.value);
+            point_nan += parseInt(numberInput.value)*100;
             break;
         case 'sya':
             numberInput = document.getElementById('number_input_sya');
-            point_sya += parseInt(numberInput.value);
+            point_sya += parseInt(numberInput.value)*100;
             break;
         case 'pei':
             numberInput = document.getElementById('number_input_pei');
-            point_pei += parseInt(numberInput.value);
+            point_pei += parseInt(numberInput.value)*100;
             break;
     }
     labelreload();                                                 //更新
@@ -71,26 +71,26 @@ function setVariableminus(jikaze) {                                //ここは-�
     switch (jikaze) {
         case 'ton':
             numberInput = document.getElementById('number_input_ton');
-            point_ton -= parseInt(numberInput.value);
+            point_ton -= parseInt(numberInput.value)*100;
             break;
         case 'nan':
             numberInput = document.getElementById('number_input_nan');
-            point_nan -= parseInt(numberInput.value);
+            point_nan -= parseInt(numberInput.value)*100;
             break;
         case 'sya':
             numberInput = document.getElementById('number_input_sya');
-            point_sya -= parseInt(numberInput.value);
+            point_sya -= parseInt(numberInput.value)*100;
             break;
         case 'pei':
             numberInput = document.getElementById('number_input_pei');
-            point_pei -= parseInt(numberInput.value);
+            point_pei -= parseInt(numberInput.value)*100;
             break;
     }
     labelreload();                                                      //ラベル表示更新
     inputreset();                                                       //テキストボックスをリセット
 }
 
-function riichi(jikaze) {
+function riichi(jikaze) {                                               //立直ボタン処理
 riichitext = '立直'
     switch (jikaze) {
         case 'ton':
@@ -111,6 +111,7 @@ riichitext = '立直'
             break;
     }
     labelreload(); 
+    sumcheck();
 }
 
 function riichirecovery() { //リー棒回収 
