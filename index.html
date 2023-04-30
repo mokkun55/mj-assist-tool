@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>四麻点数表</title>
+    <!-- <script src="script.js"></script> -->
+</head>
+
+<body>
+    <span id="honba"></span>
+    <button onclick="honba('plus')" >+</button>
+    <button onclick="honba('minus')" >-</button>
+
+    <p id="over"></p> <!--持ち越し表示-->
+
+
+    <span>東</span>
+    <label id="point_ton"></label> <!--ラベルとはテキストの左の説明-->
+    <span>：</span>
+    <input type="text" id="number_input_ton" size="5">
+    <span>00</span>
+    <button onclick="setVariableplus('ton')">+</button> <!--クリックしたときのscriptのfunctionを呼び出す-->
+    <button onclick="setVariableminus('ton')">-</button>
+    <button onclick="riichi('ton')" id="riichi_ton_button">立直</button>
+    <span id="riichi_ton"></span>
+    <br>
+
+    <span>南</span>
+    <label id="point_nan"></label>
+    <span>：</span>
+    <input type="text" id="number_input_nan"size="5">
+    <span>00</span>
+    <button onclick="setVariableplus('nan')">+</button>
+    <button onclick="setVariableminus('nan')">-</button>
+    <button onclick="riichi('nan')" id="riichi_nan_button">立直</button>
+    <span id="riichi_nan"></span>
+    <br>
+
+    <span>西</span>
+    <label id="point_sya"></label>
+    <span>：</span>
+    <input type="text" id="number_input_sya"size="5">
+    <span>00</span>
+    <button onclick="setVariableplus('sya')">+</button>
+    <button onclick="setVariableminus('sya')">-</button>
+    <button onclick="riichi('sya')" id="riichi_sya_button">立直</button>
+    <span id="riichi_sya"></span>
+    <br>
+
+    <span>北</span>
+    <label id="point_pei"></label>
+    <span>：</span>
+    <input type="text" id="number_input_pei"size="5">
+    <span>00</span>
+    <button onclick="setVariableplus('pei')">+</button>
+    <button onclick="setVariableminus('pei')">-</button>
+    <button onclick="riichi('pei')" id="riichi_pei_button">立直</button>
+    <span id="riichi_pei"></span>
+    <br>
+
+    <button onclick="riichirecovery()">リー棒回収</button> <!--立直棒回収ボタン-->
+    <button onclick="riichiover()">リー棒持ち越し</button> <!--立直棒持ち越しボタン-->
+
+    <p id="sumcheck"></p>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
