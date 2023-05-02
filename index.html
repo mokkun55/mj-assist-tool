@@ -5,25 +5,47 @@
     <meta charset="UTF-8">
     <title>四麻点数表</title>
     <!-- <script src="script.js"></script> -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <span id="honba"></span>
+    <span id="house"></span> <!--親表示-->
+    <button onclick="house('ton')" >東</button>
+    <button onclick="house('nan')" >南</button>
+    <button onclick="house('sya')" >西</button>
+    <button onclick="house('pei')" >北</button>
+    <br>
+
+    <span id="honba"></span>        <!--本場表示-->
     <button onclick="honba('plus')" >+</button>
     <button onclick="honba('minus')" >-</button>
 
-    <p id="over"></p> <!--持ち越し表示-->
-
-
-    <span>東</span>
-    <label id="point_ton"></label> <!--ラベルとはテキストの左の説明-->
+    <span id="overpoint"></span>        <!--持ち越しpoint表示-->
+    <button onclick="overpoint('plus')" >+</button>
+    <button onclick="overpoint('minus')" >-</button>
+    <br>
+    
+    <span id="house_ton">東</span>
+    <label id="point_ton"></label>   <!--ラベルとはテキストの左の説明-->
     <span>：</span>
     <input type="text" id="number_input_ton" size="5"style="text-align: right;">
     <span>00</span>
+    <button onclick="sendpointbutton('ton')">送信</button>
+
+    <div id="sendbutton_ton" style="display: none"> <!--送信ボタン稚と出てこないdiv-->
+    <span>送り先</span>
+    <button onclick="sendpoint('nan')">南</button>
+    <button onclick="sendpoint('sya')">西</button>
+    <button onclick="sendpoint('pei')">北</button>
+    </div>
+
+    <div id="riichibutton_ton" style="display: inline-block" >
     <button onclick="setVariableplus('ton')">+</button> <!--クリックしたときのscriptのfunctionを呼び出す-->
     <button onclick="setVariableminus('ton')">-</button>
     <button onclick="riichi('ton')" id="riichi_ton_button">立直</button>
     <span id="riichi_ton"></span>
+    </div>
+
     <br>
 
     <span>南</span>
@@ -60,6 +82,14 @@
     <br>
 
     <button onclick="riichirecovery()">リー棒回収</button> <!--立直棒回収ボタン-->
+    <button onclick="select_riichirecovery('ton')" id="tonButton">東</button> <!--リー棒回収対象者-->
+    <button onclick="select_riichirecovery('nan')" id="nanButton">南</button>
+    <button onclick="select_riichirecovery('sya')" id="syaButton">西</button>
+    <button onclick="select_riichirecovery('pei')" id="peiButton">北</button>
+    <span>回収対象者をクリックし、回収ボタンを押す</span>
+
+    <br>
+
     <button onclick="riichiover()">リー棒持ち越し</button> <!--立直棒持ち越しボタン-->
 
     <p id="sumcheck"></p>
