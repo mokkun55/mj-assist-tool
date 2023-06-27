@@ -1,276 +1,116 @@
-var point_ton = 25000;
-var point_nan = 25000;
-var point_sya = 25000;
-var point_pei = 25000;
-var people = 4;
-var honba_count = 0;
-var over_point = 0;
-var clickCount_ton = 0;
-var clickCount_nan = 0;
-var clickCount_sya = 0;
-var clickCount_pei = 0;
+//グローバルスコープ ＆ 初期設定
+let dice1;
+let dice2;
+var point1 = 251;
+var point2 = 252;
+var point3 = 253;
+var point4 = 254;
+document.getElementById("startbutton").style.display = "none"; //初期設定　スタートボタン消してる
+document.getElementById("drawbutton").style.display = "none"; //初期設定　流局ボタン消してる
+function takeout_reset() {
+    document.getElementById("takeout_top").style.display = "none";
+    document.getElementById("takeout_bottom").style.display = "none";
+    document.getElementById("takeout_right").style.display = "none";
+    document.getElementById("takeout_left").style.display = "none";
+}
 
-function sumcheck() {
-    var sum = point_ton + point_nan + point_sya + point_pei;
-    if (sum == 100000) {
-        document.getElementById('sumcheck').innerHTML = 'CHECK';
+takeout_reset();
+
+function test() {
+    console.log("テストだよ");
+}
+
+function riichi(wind) { //立直処理
+    switch (wind) {
+        case '1':
+            riichivoice();
+            break;
+        case '2':
+            riichivoice();
+            break;
+        case '3':
+            riichivoice();
+            break;
+        case '4':
+            riichivoice();
+            break;
+    }
+}
+
+function dicerollbutton() {
+    interval = setInterval(function () {
+        dice1 = Math.floor(Math.random() * 6) + 1;
+        dice2 = Math.floor(Math.random() * 6) + 1;
+        document.getElementById('diceresult1').innerHTML = dice1;
+        document.getElementById('diceresult2').innerHTML = dice2;
+    }, 100);
+
+    stopTime = Math.floor(Math.random() * 1000) + 500;
+    setTimeout(function () {
+        clearInterval(interval);
+        //   console.log(dice1,dice2);
+        takeoutzone();
+    }, stopTime);
+}
+
+function takeoutzone() {             //ここから取り出し処理
+    takeout_reset();
+    document.getElementById("startbutton").style.display = "block";
+    let takeoutzone = dice1 + dice2;
+    if (takeoutzone == 5 || takeoutzone == 9) {
+        console.log("下");
+        document.getElementById("takeout_bottom").style.display = "block";
+    } else if (takeoutzone == 2 || takeoutzone == 6 || takeoutzone == 10) {
+        console.log("右");
+        document.getElementById("takeout_right").style.display = "block";
+    } else if (takeoutzone == 3 || takeoutzone == 7 || takeoutzone == 11) {
+        console.log("上");
+        document.getElementById("takeout_top").style.display = "block";
     } else {
-        document.getElementById('sumcheck').innerHTML = ' ';
+        console.log("左");
+        document.getElementById("takeout_left").style.display = "block";
     }
+
+}
+
+function startbuttom() {
+    document.getElementById("startbutton").style.display = "none";
+    document.getElementById("diceresult").style.display = "none";
+    document.getElementById("takeoutzone").style.display = "none";
+    document.getElementById("dicebutton").style.display = "none";
+    document.getElementById("drawbutton").style.display = "block";
 }
 
 
-function labelreload() { //更新
-    document.getElementById('point_ton').innerHTML = point_ton;
-    document.getElementById('point_nan').innerHTML = point_nan;
-    document.getElementById('point_sya').innerHTML = point_sya;
-    document.getElementById('point_pei').innerHTML = point_pei;
-    document.getElementById('honba').innerHTML = honba_count + "本場 = +" + (honba_count * 300) + "点  ";
-    document.getElementById('overpoint').innerHTML = over_point + "点 持ち越し"
-}
-function inputreset() {                                             //入力空にする 関数
-    document.getElementById('number_input_ton').value = "";
-    document.getElementById('number_input_nan').value = "";
-    document.getElementById('number_input_sya').value = "";
-    document.getElementById('number_input_pei').value = "";
+//                                           ーーーーーポイント処理ーーーーー
 
-    sumcheck();
+document.getElementById('point1').innerHTML = point1 + "oo"; //表示
+document.getElementById('point2').innerHTML = point2 + "oo";
+document.getElementById('point3').innerHTML = point3 + "oo";
+document.getElementById('point4').innerHTML = point4 + "oo";
+
+function win(wind) { //和了処理
+
 }
 
-function house(jikaze) {
-    //親表示
+//                                           ーーーーー流局処理ーーーーー
+// document.getElementById("dicebutton").style.display ="none"; //とりま消す　一時的
+function drawbutton() {
+    document.getElementById("diceresult").style.display = "block";
+    document.getElementById("takeoutzone").style.display = "block";
+    document.getElementById("dicebutton").style.display = "block";
+    document.getElementById("drawbutton").style.display = "none";
 }
 
-function honba(status) {                                            //本場表示
-    switch (status) {
-        case 'plus':
-            document.getElementById('honba').innerHTML = honba_count++;
-            break;
-        case 'minus':
-            document.getElementById('honba').innerHTML = honba_count--;
-            break;
-    }
-    labelreload()
+//                                          ーーー音声関係ーーー
+function riichivoice() {
+    // ランダムな数値を生成して、1から3までの整数を得る
+    var randomIndex = Math.floor(Math.random() * 3) + 1;
+
+    // audio要素を取得して、source属性にランダムな音声ファイルのパスを設定する
+    var audioElement = document.getElementById('audio');
+    audioElement.src = 'riichi' + randomIndex + '.wav';
+
+    // 再生を開始する
+    audioElement.play();
 }
-
-function overpoint(status) {                                                  //持ち越し計算
-    switch (status) {
-        case 'plus':
-            over_point = over_point + 1000; //IDoverpointを読み込み １タス
-            break;
-        case 'minus':
-            over_point = over_point - 1000;
-            break;
-    }
-    labelreload();
-}
-
-function sendpointbutton(jikaze){ //送信ボタン
-    switch(jikaze){
-        case 'ton':
-            document.getElementById("sendbutton_ton").style.display = "inline-block";
-            document.getElementById("riichibutton_ton").style.display = "none";
-            sendpointinput = document.getElementById('number_input_ton');
-            point_ton -= parseInt(sendpointinput.value) * 100;
-            break;
-    }
-}
-
-function sendpoint(jikaze){ //ポイント処理
-    switch(jikaze){
-        case 'ton':
-            //点数処理
-            
-            break;
-        case 'nan':
-            document.getElementById("sendbutton_ton").style.display = "none";
-            document.getElementById("riichibutton_ton").style.display = "inline-block";
-            point_nan += parseInt(sendpointinput.value) * 100;
-
-            labelreload();
-            inputreset();
-            sumcheck();
-
-            break;
-        case 'sya':
-            document.getElementById("sendbutton_ton").style.display = "none";
-            document.getElementById("riichibutton_ton").style.display = "inline-block";
-            labelreload();
-            inputreset();
-            break;
-        case 'pei':
-            document.getElementById("sendbutton_ton").style.display = "none";
-            document.getElementById("riichibutton_ton").style.display = "inline-block";
-            labelreload();
-            inputreset();
-            break;
-    }
-}
-
-
-
-
-function setVariableplus(jikaze) {                                   //ここは+ボタンを押したときの処理 入力した値ｘ１００を代入してる
-    switch (jikaze) {
-        case 'ton':
-            numberInput = document.getElementById('number_input_ton');
-            point_ton += parseInt(numberInput.value) * 100;
-            break;
-        case 'nan':
-            numberInput = document.getElementById('number_input_nan');
-            point_nan += parseInt(numberInput.value) * 100;
-            break;
-        case 'sya':
-            numberInput = document.getElementById('number_input_sya');
-            point_sya += parseInt(numberInput.value) * 100;
-            break;
-        case 'pei':
-            numberInput = document.getElementById('number_input_pei');
-            point_pei += parseInt(numberInput.value) * 100;
-            break;
-    }
-    labelreload();                                                 //更新
-    inputreset();                                                  //テキストボックスをリセット
-}
-
-
-function setVariableminus(jikaze) {                                //ここは-ボタンを押したときの処理
-    switch (jikaze) {
-        case 'ton':
-            numberInput = document.getElementById('number_input_ton');
-            point_ton -= parseInt(numberInput.value) * 100;
-            break;
-        case 'nan':
-            numberInput = document.getElementById('number_input_nan');
-            point_nan -= parseInt(numberInput.value) * 100;
-            break;
-        case 'sya':
-            numberInput = document.getElementById('number_input_sya');
-            point_sya -= parseInt(numberInput.value) * 100;
-            break;
-        case 'pei':
-            numberInput = document.getElementById('number_input_pei');
-            point_pei -= parseInt(numberInput.value) * 100;
-            break;
-    }
-    labelreload();                                                      //ラベル表示更新
-    inputreset();                                                       //テキストボックスをリセット
-}
-
-function riichi(jikaze) {                                               //立直ボタン処理
-    riichitext = '立直'
-    switch (jikaze) {
-        case 'ton':
-            point_ton -= 1000;
-            document.getElementById('riichi_ton').innerHTML = '立直';
-            break;
-        case 'nan':
-            point_nan -= 1000;
-            document.getElementById('riichi_nan').innerHTML = '立直';
-            break;
-        case 'sya':
-            point_sya -= 1000;
-            document.getElementById('riichi_sya').innerHTML = '立直';
-            break;
-        case 'pei':
-            point_pei -= 1000;
-            document.getElementById('riichi_pei').innerHTML = '立直';
-            break;
-    }
-    labelreload();
-    sumcheck();
-}
-
-function resetbuttoncolor(){
-    tonButton.style.backgroundColor = "";
-    tonButton.style.color = "";
-    nanButton.style.backgroundColor = "";
-    nanButton.style.color = "";
-    syaButton.style.backgroundColor = "";
-    syaButton.style.color = "";
-    peiButton.style.backgroundColor = "";
-    peiButton.style.color = "";
-}
-
-function riichirecovery() { //リー棒回収 
-    resetbuttoncolor();
-
-    document.getElementById('riichi_ton').innerHTML = ''; //立直 消す
-    document.getElementById('riichi_nan').innerHTML = '';
-    document.getElementById('riichi_sya').innerHTML = '';
-    document.getElementById('riichi_pei').innerHTML = '';
-}
-
-function select_riichirecovery(jikaze) {
-    switch (jikaze) {
-        case 'ton':
-            clickCount_ton++;
-            if (clickCount_ton % 2 == 1) {
-                //ぼたん暗くする
-                tonButton.style.backgroundColor = "#555";
-                tonButton.style.color = "#fff"; //テキスをを白く
-                var riichiselect_ton = true;
-            } else {
-                //ボタン明るく
-                tonButton.style.backgroundColor = "";
-                tonButton.style.color = "";
-                var riichiselect_ton = false;
-            }
-            break;
-        case 'nan':
-            clickCount_nan++;
-            if (clickCount_nan % 2 == 1) {
-                //ぼたん暗くする
-                nanButton.style.backgroundColor = "#555";
-                nanButton.style.color = "#fff"; //テキスをを白く
-                var riichiselect_nan = true;
-            } else {
-                //ボタン明るく
-                nanButton.style.backgroundColor = "";
-                nanButton.style.color = "";
-                var riichiselect_nan = false;
-            }
-            break;
-        case 'sya':
-            clickCount_sya++;
-            if (clickCount_sya % 2 == 1) {
-                //ぼたん暗くする
-                syaButton.style.backgroundColor = "#555";
-                syaButton.style.color = "#fff"; //テキスをを白く
-                var riichiselect_sya = true;
-            } else {
-                //ボタン明るく
-                syaButton.style.backgroundColor = "";
-                syaButton.style.color = "";
-                var riichiselect_sya = false;
-            }
-            break;
-        case 'pei':
-            clickCount_pei++;
-            if (clickCount_pei % 2 == 1) {
-                //ぼたん暗くする
-                peiButton.style.backgroundColor = "#555";
-                peiButton.style.color = "#fff"; //テキスをを白く
-                var riichiselect_pei = true;
-            } else {
-                //ボタン明るく
-                peiButton.style.backgroundColor = "";
-                peiButton.style.color = "";
-                var riichiselect_pei = false;
-            }
-            break;
-
-    }
-}
-
-function riichiover() { //リー棒持ち越し
-    resetbuttoncolor();
-}
-
-
-
-
-
-
-labelreload(); //最初のラベル表示
-sumcheck()

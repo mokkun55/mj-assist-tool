@@ -3,96 +3,71 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>四麻点数表</title>
-    <!-- <script src="script.js"></script> -->
+    <title>test</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <span id="house"></span> <!--親表示-->
-    <button onclick="house('ton')" >東</button>
-    <button onclick="house('nan')" >南</button>
-    <button onclick="house('sya')" >西</button>
-    <button onclick="house('pei')" >北</button>
-    <br>
+    <audio id="audio" controls style="display: none;"></audio>
+    <!-- <div class="header">
+        <div class="round">X1局</div>
+        <div class="honba">x本場</div>
+        <div class="offerPoint">供託x本</div>
+    </div> -->
 
-    <span id="honba"></span>        <!--本場表示-->
-    <button onclick="honba('plus')" >+</button>
-    <button onclick="honba('minus')" >-</button>
+    <div class="dicebox"> <!-- サイコロボックスゾーン関係 -->
+        <div class="dicezone">
 
-    <span id="overpoint"></span>        <!--持ち越しpoint表示-->
-    <button onclick="overpoint('plus')" >+</button>
-    <button onclick="overpoint('minus')" >-</button>
-    <br>
-    
-    <span id="house_ton">東</span>
-    <label id="point_ton"></label>   <!--ラベルとはテキストの左の説明-->
-    <span>：</span>
-    <input type="text" id="number_input_ton" size="5"style="text-align: right;">
-    <span>00</span>
-    <button onclick="sendpointbutton('ton')">送信</button>
+            <div class="ALLpoint">
+                <div class="point point1" id="point1" onclick="win('1')"></div> <!-- ここで点数処理 -->
+                <div class="point point2" id="point2" onclick="win('2')"></div>
+                <div class="point point3" id="point3" onclick="win('3')"></div>
+                <div class="point point4" id="point4" onclick="win('4')"></div> <!-- ここで点数処理 -->
 
-    <div id="sendbutton_ton" style="display: none"> <!--送信ボタン稚と出てこないdiv-->
-    <span>送り先</span>
-    <button onclick="sendpoint('nan')">南</button>
-    <button onclick="sendpoint('sya')">西</button>
-    <button onclick="sendpoint('pei')">北</button>
+                <div id="dicebutton">
+                    <button class="dicerollbutton1" type="button" onclick="dicerollbutton()">🎲</button>
+                    <button class="dicerollbutton2" type="button" onclick="dicerollbutton()">🎲</button>
+                    <button class="dicerollbutton3" type="button" onclick="dicerollbutton()">🎲</button>
+                    <button class="dicerollbutton4" type="button" onclick="dicerollbutton()">🎲</button>
+                </div>
+                <!-- 流局drawボタン -->
+                <div id="drawbutton">
+                    <button class="drawbutton1" type="button" onclick="drawbutton()">🏳</button>
+                    <button class="drawbutton2" type="button" onclick="drawbutton()">🏳</button>
+                    <button class="drawbutton3" type="button" onclick="drawbutton()">🏳</button>
+                    <button class="drawbutton4" type="button" onclick="drawbutton()">🏳</button>
+                </div>
+
+                <!-- リーチボタン -->
+                <button class="riichi_button riichi_1" type="button" onclick="riichi('1')">立直</button>
+                <button class="riichi_button riichi_2" type="button" onclick="riichi('2')">立直</button>
+                <button class="riichi_button riichi_3" type="button" onclick="riichi('3')">立直</button>
+                <button class="riichi_button riichi_4" type="button" onclick="riichi('4')">立直</button>
+            </div>
+
+            <div class="dice">
+                <div id="diceresult">
+                    <div id="diceresult1"></div>
+                    <div id="diceresult2"></div>
+                </div>
+                <div id="takeoutzone">
+                    <div id="takeout_right"></div>
+                    <div id="takeout_left"></div>
+                    <div id="takeout_top"></div>
+                    <div id="takeout_bottom"></div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="footer">
+            <button id="startbutton" onclick="startbuttom()">スタート</button>
+        </div>
     </div>
 
-    <div id="riichibutton_ton" style="display: inline-block" >
-    <button onclick="setVariableplus('ton')">+</button> <!--クリックしたときのscriptのfunctionを呼び出す-->
-    <button onclick="setVariableminus('ton')">-</button>
-    <button onclick="riichi('ton')" id="riichi_ton_button">立直</button>
-    <span id="riichi_ton"></span>
-    </div>
 
-    <br>
 
-    <span>南</span>
-    <label id="point_nan"></label>
-    <span>：</span>
-    <input type="text" id="number_input_nan"size="5"style="text-align: right;">
-    <span>00</span>
-    <button onclick="setVariableplus('nan')">+</button>
-    <button onclick="setVariableminus('nan')">-</button>
-    <button onclick="riichi('nan')" id="riichi_nan_button">立直</button>
-    <span id="riichi_nan"></span>
-    <br>
-
-    <span>西</span>
-    <label id="point_sya"></label>
-    <span>：</span>
-    <input type="text" id="number_input_sya"size="5"style="text-align: right;">
-    <span>00</span>
-    <button onclick="setVariableplus('sya')">+</button>
-    <button onclick="setVariableminus('sya')">-</button>
-    <button onclick="riichi('sya')" id="riichi_sya_button">立直</button>
-    <span id="riichi_sya"></span>
-    <br>
-
-    <span>北</span>
-    <label id="point_pei"></label>
-    <span>：</span>
-    <input type="text" id="number_input_pei"size="5"style="text-align: right;">
-    <span>00</span>
-    <button onclick="setVariableplus('pei')">+</button>
-    <button onclick="setVariableminus('pei')">-</button>
-    <button onclick="riichi('pei')" id="riichi_pei_button">立直</button>
-    <span id="riichi_pei"></span>
-    <br>
-
-    <button onclick="riichirecovery()">リー棒回収</button> <!--立直棒回収ボタン-->
-    <button onclick="select_riichirecovery('ton')" id="tonButton">東</button> <!--リー棒回収対象者-->
-    <button onclick="select_riichirecovery('nan')" id="nanButton">南</button>
-    <button onclick="select_riichirecovery('sya')" id="syaButton">西</button>
-    <button onclick="select_riichirecovery('pei')" id="peiButton">北</button>
-    <span>回収対象者をクリックし、回収ボタンを押す</span>
-
-    <br>
-
-    <button onclick="riichiover()">リー棒持ち越し</button> <!--立直棒持ち越しボタン-->
-
-    <p id="sumcheck"></p>
 
 
     <script src="script.js"></script>

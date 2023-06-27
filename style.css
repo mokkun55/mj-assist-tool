@@ -1,0 +1,364 @@
+@font-face {
+    font-family: "segment";
+    /* フォントファミリー名を指定 */
+    src: url("DSEG7Modern-Bold.woff") format("woff");
+    /* WOFFフォントのパスを指定 */
+}
+
+@font-face {
+    font-family: "dicefont";
+    /* フォントファミリー名を指定 */
+    src: url("dice.woff") format("woff");
+    /* WOFFフォントのパスを指定 */
+}
+
+body {
+    background-color: rgb(0, 50, 7);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    touch-action: manipulation;
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.round {
+    width: 300px;
+    height: 150px;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.honba {
+    width: 300px;
+    height: 150px;
+    background-color: rgb(0, 0, 0);
+    /* border: 2px solid rgb(255, 255, 255); 縁のスタイル */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*このあたりは文字の場所ぎめ*/
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.offerPoint {
+    width: 300px;
+    height: 150px;
+    background-color: rgb(0, 0, 0);
+    /* border: 2px solid rgb(255, 255, 255); 縁のスタイル */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*このあたりは文字の場所ぎめ*/
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+/* .header2{
+    display: flex;
+    justify-content:space-around;
+} */
+
+.dicerollbutton1 {
+    position: absolute;
+    border: 5px solid #ffffff;
+    width: 150px;
+    height: 150px;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+}
+
+.dicerollbutton2 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border: 5px solid #ffffff;
+    width: 150px;
+    height: 150px;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+}
+
+.dicerollbutton3 {
+    position: absolute;
+    right: 0;
+    border: 5px solid #ffffff;
+    width: 150px;
+    height: 150px;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+}
+
+.dicerollbutton4 {
+    position: absolute;
+    border: 5px solid #ffffff;
+    bottom: 0;
+    width: 150px;
+    height: 150px;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+}
+
+.drawbutton1 {
+    position: absolute;
+    border: 5px solid #ffffff;
+    width: 150px;
+    height: 150px;
+    background-color: rgb(0, 239, 211);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+}
+
+.drawbutton2 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border: 5px solid #ffffff;
+    width: 150px;
+    height: 150px;
+    background-color: rgb(0, 239, 211);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+}
+
+.drawbutton3 {
+    position: absolute;
+    right: 0;
+    border: 5px solid #ffffff;
+    width: 150px;
+    height: 150px;
+    background-color: rgb(0, 239, 211);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+}
+
+.drawbutton4 {
+    position: absolute;
+    border: 5px solid #ffffff;
+    bottom: 0;
+    width: 150px;
+    height: 150px;
+    background-color: rgb(0, 239, 211);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+}
+
+.dicebox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 150px);
+    /* 画面の高さに合わせる場合 */
+}
+
+.dicezone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.ALLpoint {
+    position: relative;
+    width: 750px;
+    height: 750px;
+    background-color: #ccc;
+}
+
+.point {
+    font-family: "segment";
+    color: red;
+    font-size: 90px;
+    position: absolute;
+    top: 0;
+    /* この３行で四角の左に配置し、原点を中央にしてる */
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+
+.point1 {
+    transform: translate(-50%, -50%) rotate(180deg);
+    left: 375px;
+    top: 50px;
+}
+
+.point2 {
+    left: calc(750px - 50px);
+    /* ここでみぎ面から10px離してる */
+    transform: translate(-50%, -50%) rotate(270deg);
+    top: 375px;
+}
+
+.point3 {
+    left: 375px;
+    top: calc(750px - 50px);
+}
+
+.point4 {
+    left: 50px;
+    transform: translate(-50%, -50%) rotate(90deg);
+    top: 375px;
+}
+
+.riichi_button {
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(255, 255, 255);
+    font-size: 70px;
+    position: absolute;
+    top: 0;
+    /* この３行で四角の左に配置し、原点を中央にしてる */
+    left: 0;
+    transform: translate(-50%, -50%);
+    width: 550px;
+    height: 100px;
+    background-color: #1504ff;
+}
+
+.riichi_1 {
+    transform: translate(-50%, -50%) rotate(180deg);
+    left: 375px;
+    top: calc(50px - 100px);
+}
+
+.riichi_2 {
+    left: calc(750px - 50px + 100px);
+    transform: translate(-50%, -50%) rotate(270deg);
+    top: 375px;
+}
+
+.riichi_3 {
+    left: 375px;
+    top: calc(750px - 50px + 100px);
+}
+
+.riichi_4 {
+    left: calc(50px - 100px);
+    transform: translate(-50%, -50%) rotate(90deg);
+    top: 375px;
+}
+
+.dice {
+    font-size: 100px;
+    font-family: "dicefont";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background-color: silver;
+}
+
+#takeoutzone {
+    font-size: 40px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+#takeout_right {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 40px 0 40px 40px;
+    border-color: transparent transparent transparent #007bff;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 200px;
+    left: calc(400px - 20px);
+}
+
+#takeout_left {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 40px 0 40px 40px;
+    border-color: transparent transparent transparent #007bff;
+    transform: translate(-50%, -50%) rotateY(180deg);
+    position: absolute;
+    top: 200px;
+    left: calc(20px);
+}
+
+#takeout_top {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 40px 0 40px 40px;
+    border-color: transparent transparent transparent #007bff;
+    transform: translate(-50%, -50%) rotate(270deg);
+    position: absolute;
+    top: calc(0px + 20px);
+    left: calc(200px);
+}
+
+#takeout_bottom {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 40px 0 40px 40px;
+    border-color: transparent transparent transparent #007bff;
+    transform: translate(-50%, -50%) rotate(90deg);
+    position: absolute;
+    top: calc(420px - 40px);
+    left: 200px;
+}
+
+#diceresult1 {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+
+#diceresult2 {
+    position: absolute;
+    top: 200px;
+    left: 200px;
+}
+
+.footer {
+    position: absolute;
+    top: 1450px;
+    width: 700px;
+    height: 300px;
+    /* ここでfooterの表示域設定 */
+    /* background-color: #37f8eb;　範囲確認用のボックス表示 */
+}
+
+#startbutton {
+    position: relative;
+    transform: translate(-50%, -50%);
+    top: 150px;
+    left: 350px;
+    background-color: aqua;
+    color: red;
+    font-size: 120px;
+}
