@@ -201,8 +201,7 @@ body {
     color: red;
     font-size: 90px;
     position: absolute;
-    top: 0;
-    /* この３行で四角の左に配置し、原点を中央にしてる */
+    top: 0;/* この３行で四角の左に配置し、原点を中央にしてる */
     left: 0;
     transform: translate(-50%, -50%);
 }
@@ -214,9 +213,9 @@ body {
 }
 
 .point2 {
-    left: calc(750px - 50px);
-    /* ここでみぎ面から10px離してる */
-    transform: translate(-50%, -50%) rotate(270deg);
+
+    left: 50px;
+    transform: translate(-50%, -50%) rotate(90deg);
     top: 375px;
 }
 
@@ -226,8 +225,8 @@ body {
 }
 
 .point4 {
-    left: 50px;
-    transform: translate(-50%, -50%) rotate(90deg);
+    left: calc(750px - 50px);
+    transform: translate(-50%, -50%) rotate(270deg);
     top: 375px;
 }
 
@@ -252,8 +251,8 @@ body {
 }
 
 .riichi_2 {
-    left: calc(750px - 50px + 100px);
-    transform: translate(-50%, -50%) rotate(270deg);
+    left: calc(50px - 100px);
+    transform: translate(-50%, -50%) rotate(90deg);
     top: 375px;
 }
 
@@ -263,8 +262,8 @@ body {
 }
 
 .riichi_4 {
-    left: calc(50px - 100px);
-    transform: translate(-50%, -50%) rotate(90deg);
+    left: calc(750px - 50px + 100px);
+    transform: translate(-50%, -50%) rotate(270deg);
     top: 375px;
 }
 
@@ -343,6 +342,40 @@ body {
     top: 200px;
     left: 200px;
 }
+
+
+.cp { /* ーーーconnpass関係ーーー */
+    font-size: 90px;
+    position: absolute;
+    position: absolute;
+    top: 0;/* この３行で四角の左に配置し、原点を中央にしてる */
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+
+#cp1{
+    transform: translate(-50%, -50%) rotate(180deg);
+    left: 200px;
+    top: 50px;
+}
+#cp2{
+    transform: translate(-50%, -50%) rotate(90deg);
+    left: 50px;
+    top: 200px;
+}
+#cp3{
+    transform: translate(-50%, -50%) rotate(0deg);
+    left: 200px;
+    top: 350px;
+}
+#cp4{
+    transform: translate(-50%, -50%) rotate(270deg);
+    left: 350px;
+    top: 200px;
+}
+
+
+
 
 .footer {
     position: absolute;
