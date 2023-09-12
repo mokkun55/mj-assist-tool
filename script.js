@@ -1,10 +1,10 @@
 //グローバルスコープ ＆ 初期設定
 let dice1;
 let dice2;
-var point1 = 251;
-var point2 = 252;
-var point3 = 253;
-var point4 = 254;
+var point1 = 250; //持ち点
+var point2 = 250; //左
+var point3 = 250;
+var point4 = 250;
 
 var cp1, cp2, cp3, cp4;
 
@@ -13,8 +13,15 @@ var start_house = 0;
 var start_position = 0;
 
 document.getElementById("startbutton").style.display = "none"; //初期設定　スタートボタン消してる
-document.getElementById("drawbutton").style.display = "none"; //初期設定　流局ボタン消してる
+document.getElementById("ALLdrawbutton").style.display = "none"; //初期設定　流局ボタン消してる
 document.getElementById("connpass").style.display = "none"; //初期設定　流局ボタン消してる
+document.getElementById("rii_bou").style.display = "none"; //初期設定　流局ボタン消してる
+
+
+// スタート表示
+
+
+
 
 function takeout_reset() {
     document.getElementById("takeout_top").style.display = "none";
@@ -73,7 +80,7 @@ function dicerollbutton() {
 function takeoutzone() {             //ここから取り出し処理
     takeout_reset();
     var start_position;
-    
+
     let takeoutzone = dice1 + dice2;
     if (takeoutzone == 5 || takeoutzone == 9) {
         console.log("下");
@@ -95,9 +102,9 @@ function takeoutzone() {             //ここから取り出し処理
 
     if (startjudgement == 2){       //最初の一回しかスタート表示しない（🎲２回振ったとき
         document.getElementById("startbutton").style.display = "block";
-        
+
         //この数字で起家と席ぎめ
-        
+
         if (start_house == 1) {
             cp1 = "東";
             cp2 = "南";
@@ -125,23 +132,22 @@ function takeoutzone() {             //ここから取り出し処理
         }
         winddisplay();
     } else if (startjudgement == 0) {
-        //🎲を振って親を決めてください
-        
+        console.log("起家きめて")
     } else if (startjudgement == 1) {
-        //🎲を振って取り出し位置を決めてください
         start_house = start_position; //起家代入
         console.log(start_house);
     }
-    
+
 }
 
 function startbuttom() {
     document.getElementById("startbutton").style.display = "none";
     document.getElementById("diceresult").style.display = "none";
     document.getElementById("takeoutzone").style.display = "none";
-    document.getElementById("dicebutton").style.display = "none";
-    document.getElementById("drawbutton").style.display = "block";
+    document.getElementById("ALLdicebutton").style.display = "none";
+    document.getElementById("ALLdrawbutton").style.display = "block";
     document.getElementById("connpass").style.display = "block";
+    document.getElementById("start").style.display = "none";
 }
 
 
@@ -194,5 +200,5 @@ function riichivoice() {
 }
 
 function startvoice() {
-    
+
 }

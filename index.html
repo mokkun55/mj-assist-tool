@@ -8,6 +8,8 @@
 </head>
 
 <body>
+    <a id="start">①サイコロ振って起家決めて <br> サイコロ振って取り出し決めて</a>
+
     <audio id="audio" controls style="display: none;"></audio>
     <!-- <div class="header">
         <div class="round">X1局</div>
@@ -18,33 +20,49 @@
     <div class="dicebox"> <!-- サイコロボックスゾーン関係 -->
         <div class="dicezone">
 
-            <div class="ALLpoint">
-                <div class="point point1" id="point1" onclick="win('1')"></div> <!-- ここで点数処理 -->
+            <div class="ALLpoint"><!-- ここで点数処理 -->
+                <div id="rii_bou">
+                    <img src="riichi_bou.png" class="rii rii_bou1">
+                    <img src="riichi_bou.png" class="rii rii_bou2">
+                    <img src="riichi_bou.png" class="rii rii_bou3">
+                    <img src="riichi_bou.png" class="rii rii_bou4">
+                </div>
+
+
+                <div class="point point1" id="point1" onclick="win('1')"></div>
                 <div class="point point2" id="point2" onclick="win('2')"></div>
                 <div class="point point3" id="point3" onclick="win('3')"></div>
-                <div class="point point4" id="point4" onclick="win('4')"></div> <!-- ここで点数処理 -->
+                <div class="point point4" id="point4" onclick="win('4')"></div>
 
-                <div id="dicebutton">
-                    <button class="dicerollbutton1" type="button" onclick="dicerollbutton()">🎲</button>
-                    <button class="dicerollbutton2" type="button" onclick="dicerollbutton()">🎲</button>
-                    <button class="dicerollbutton3" type="button" onclick="dicerollbutton()">🎲</button>
-                    <button class="dicerollbutton4" type="button" onclick="dicerollbutton()">🎲</button>
+                <div id="ALLdicebutton">
+                    <button class="dicebutton dicerollbutton1" type="button" onclick="dicerollbutton()">🎲</button>
+                    <button class="dicebutton dicerollbutton2" type="button" onclick="dicerollbutton()">🎲</button>
+                    <button class="dicebutton dicerollbutton3" type="button" onclick="dicerollbutton()">🎲</button>
+                    <button class="dicebutton dicerollbutton4" type="button" onclick="dicerollbutton()">🎲</button>
                 </div>
                 <!-- 流局drawボタン -->
-                <div id="drawbutton">
-                    <button class="drawbutton1" type="button" onclick="drawbutton()">流</button>
-                    <button class="drawbutton2" type="button" onclick="drawbutton()">流</button>
-                    <button class="drawbutton3" type="button" onclick="drawbutton()">流</button>
-                    <button class="drawbutton4" type="button" onclick="drawbutton()">流</button>
+                <div id="ALLdrawbutton">
+                    <!-- <button class="drawbutton drawbutton1" type="button" onclick="drawbutton()">流</button>
+                    <button class="drawbutton drawbutton2" type="button" onclick="drawbutton()">流</button>
+                    <button class="drawbutton drawbutton3" type="button" onclick="drawbutton()">流</button>
+                    <button class="drawbutton drawbutton4" type="button" onclick="drawbutton()">流</button> -->
                 </div>
 
                 <!-- リーチボタン -->
-                <button class="riichi_button riichi_1" type="button" onclick="riichi('1')">立直</button>
-                <button class="riichi_button riichi_2" type="button" onclick="riichi('2')">立直</button>
-                <button class="riichi_button riichi_3" type="button" onclick="riichi('3')">立直</button>
-                <button class="riichi_button riichi_4" type="button" onclick="riichi('4')">立直</button>
+                <div id="ALLriichi_button">
+                    <button class="riichi_button riichi_1" type="button" onclick="riichi('1')">立直</button>
+                    <button class="riichi_button riichi_2" type="button" onclick="riichi('2')">立直</button>
+                    <button class="riichi_button riichi_3" type="button" onclick="riichi('3')">立直</button>
+                    <button class="riichi_button riichi_4" type="button" onclick="riichi('4')">立直</button>
+                </div>
 
-                
+                <div id="connpass"> <!-- コンパス -->
+                    <div class="cp" id="cp1"></div> <!-- NSEW -->
+                    <div class="cp" id="cp2"></div>
+                    <div class="cp" id="cp3"></div>
+                    <div class="cp" id="cp4"></div>
+                </div>
+
             </div>
 
             <div class="dice">
@@ -58,12 +76,7 @@
                     <div id="takeout_top"></div>
                     <div id="takeout_bottom"></div>
                 </div>
-                <div id="connpass"> <!-- コンパス -->
-                    <div class="cp" id="cp1"></div> <!-- NSEW -->
-                    <div class="cp" id="cp2"></div>
-                    <div class="cp" id="cp3"></div>
-                    <div class="cp" id="cp4"></div>
-                </div>
+
             </div>
 
 
@@ -77,8 +90,10 @@
 
 
 
-
     <script src="script.js"></script>
 </body>
+
+
+
 
 </html>
