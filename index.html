@@ -8,8 +8,11 @@
 </head>
 
 <body>
-    <a id="start">ページの大きさ50%orスマホ表示推奨</a>
-
+    <div id="header">
+        <a>①🎲振って起家決めてください</a><br>
+        <a>②🎲振って取り出し位置決めてください</a><br>
+        <a>③スタートボタンを押してスタート！</a>
+    </div>
     <audio id="audio" controls style="display: none;"></audio>
     <!-- <div class="header">
         <div class="round">X1局</div>
@@ -28,12 +31,12 @@
                     <img src="riichi_bou.png" class="rii rii_bou4">
                 </div>
 
-
-                <div class="point point1" id="point1" onclick="win('1')"></div>
-                <div class="point point2" id="point2" onclick="win('2')"></div>
-                <div class="point point3" id="point3" onclick="win('3')"></div>
-                <div class="point point4" id="point4" onclick="win('4')"></div>
-
+                <div id="point">
+                    <div class="point point1" id="point1" onclick="win('1')"></div>
+                    <div class="point point2" id="point2" onclick="win('2')"></div>
+                    <div class="point point3" id="point3" onclick="win('3')"></div>
+                    <div class="point point4" id="point4" onclick="win('4')"></div>
+                </div>
                 <div id="ALLdicebutton">
                     <button class="dicebutton dicerollbutton1" type="button" onclick="dicerollbutton()">🎲</button>
                     <button class="dicebutton dicerollbutton2" type="button" onclick="dicerollbutton()">🎲</button>
@@ -70,11 +73,11 @@
                     <div id="diceresult1"></div>
                     <div id="diceresult2"></div>
                 </div>
-                <div id="takeoutzone">
+                <div id="takeoutzone"> <!--やじるし-->
                     <div id="takeout_right"></div>
                     <div id="takeout_left"></div>
-                    <div id="takeout_top"></div>
-                    <div id="takeout_bottom"></div>
+                    <div id="takeout_up"></div>
+                    <div id="takeout_down"></div>
                 </div>
 
             </div>

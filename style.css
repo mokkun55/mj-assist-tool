@@ -12,6 +12,11 @@
     /* WOFFフォントのパスを指定 */
 }
 
+
+
+
+
+
 body {
     background-color: rgb(0, 50, 7);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -19,9 +24,11 @@ body {
     overflow: hidden;
 }
 
-.header {
-    display: flex;
-    justify-content: space-around;
+#header {
+    color: #ffffff;
+    font-size: 50px;
+    /* display: flex;
+    justify-content: space-around; */
 }
 
 
@@ -307,7 +314,7 @@ body {
     left: calc(20px);
 }
 
-#takeout_top {
+#takeout_up {
     width: 0;
     height: 0;
     border-style: solid;
@@ -319,7 +326,7 @@ body {
     left: calc(200px);
 }
 
-#takeout_bottom {
+#takeout_down {
     width: 0;
     height: 0;
     border-style: solid;
