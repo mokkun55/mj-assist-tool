@@ -15,21 +15,21 @@ var startjudgement = 0;
 // var start_house = 0;
 var start_position = 0;
 
+var now_wind = "東";
+var num_wind = 1;
+
+var honba = 0;
+var offer_now = 0;
+
+
 document.getElementById("startbutton").style.display = "none"; //初期設定　スタートボタン消してる
-document.getElementById("ALLdrawbutton").style.display = "none"; //初期設定　流局ボタン消してる
+document.getElementById("drawbutton").style.display = "none"; //初期設定　流局ボタン消してる
 document.getElementById("connpass").style.display = "none"; //初期設定　流局ボタン消してる
-document.getElementById("rii_bou").style.display = "none"; //初期設定　流局ボタン消してる
-
-
-//==カット機能==
-document.getElementById("point").style.display = "none"; //ポイント非表示
+// document.getElementById("rii_bou").style.display = "none"; //初期設定　流局ボタン消してる
 document.getElementById("ALLriichi_button").style.display = "none";
 
 
 // スタート表示
-
-
-
 
 function takeout_reset() {
     document.getElementById("takeout_up").style.display = "none";
@@ -55,98 +55,28 @@ function riichi(wind) { //立直処理
     switch (wind) {
         case '1':
             riichivoice();
+            document.getElementById("rii_bou1").style.display = "block";
+            point1 -= 1;
             break;
         case '2':
             riichivoice();
+            document.getElementById("rii_bou2").style.display = "block";
+            point2 -= 1;
             break;
         case '3':
             riichivoice();
+            document.getElementById("rii_bou3").style.display = "block";
+            point3 -= 1;
             break;
         case '4':
             riichivoice();
+            document.getElementById("rii_bou4").style.display = "block";
+            point4 -= 1;
             break;
     }
+    // console.log(point1);
+    pointdisplay();
 }
-
-// function dicerollbutton() {
-//     startjudgement += 1; //１回目は起家ぎめ
-//     interval = setInterval(function () {
-//         dice1 = Math.floor(Math.random() * 6) + 1;
-//         dice2 = Math.floor(Math.random() * 6) + 1;
-//         document.getElementById('diceresult1').innerHTML = dice1;
-//         document.getElementById('diceresult2').innerHTML = dice2;
-//     }, 100);
-
-//     stopTime = Math.floor(Math.random() * 1000) + 500;
-//     setTimeout(function () {
-//         clearInterval(interval);
-//         //   console.log(dice1,dice2);
-//         takeoutzone();
-//     }, stopTime);
-// }
-
-// function takeoutzone() {             //ここから取り出し処理
-//     takeout_reset();
-//     var start_position;
-
-//     let takeoutzone = dice1 + dice2;
-//     if (takeoutzone == 5 || takeoutzone == 9) {
-//         console.log("下");
-//         start_start_position = 3;
-//         document.getElementById("takeout_bottom").style.display = "block";
-//     } else if (takeoutzone == 2 || takeoutzone == 6 || takeoutzone == 10) {
-//         console.log("右");
-//         start_position = 4;
-//         document.getElementById("takeout_right").style.display = "block";
-//     } else if (takeoutzone == 3 || takeoutzone == 7 || takeoutzone == 11) {
-//         console.log("上");
-//         start_position = 1;
-//         document.getElementById("takeout_top").style.display = "block";
-//     } else {
-//         console.log("左");
-//         start_position = 2;
-//         document.getElementById("takeout_left").style.display = "block";
-//     }
-
-//     if (startjudgement == 2){       //最初の一回しかスタート表示しない（🎲２回振ったとき
-//         document.getElementById("startbutton").style.display = "block";
-
-//         //この数字で起家と席ぎめ
-
-        // if (start_house == 1) {
-        //     cp1 = "東";
-        //     cp2 = "南";
-        //     cp3 = "西";
-        //     cp4 = "北";
-        //     document.getElementById("cp1").style.color = "red";
-        // } else if (start_house == 2) {
-        //     cp1 = "北";
-        //     cp2 = "東";
-        //     cp3 = "南";
-        //     cp4 = "西";
-        //     document.getElementById("cp2").style.color = "red";
-        // } else if (start_house == 3) {
-        //     cp1 = "西";
-        //     cp2 = "北";
-        //     cp3 = "東";
-        //     cp4 = "南";
-        //     document.getElementById("cp3").style.color = "red";
-        // } else if (start_house == 4) {
-        //     cp1 = "南";
-        //     cp2 = "西";
-        //     cp3 = "北";
-        //     cp4 = "東";
-        //     document.getElementById("cp4").style.color = "red";
-        // }
-//         winddisplay();
-//     } else if (startjudgement == 0) {
-//         console.log("起家きめて")
-//     } else if (startjudgement == 1) {
-//         start_house = start_position; //起家代入
-//         console.log(start_house);
-//     }
-
-// }
 
 //サイコロ処理NEW
 function dicerollbutton() {
@@ -227,7 +157,7 @@ function dicerollbutton() {
                 document.getElementById("takeout_left").style.display = "block";
             }
 
-
+            takeout_voice();
             document.getElementById("startbutton").style.display = "block"; //startB表示
         } else {
             //２局目以降の処理
@@ -243,20 +173,26 @@ function startbuttom() {
     document.getElementById("diceresult").style.display = "none";
     document.getElementById("takeoutzone").style.display = "none";
     document.getElementById("ALLdicebutton").style.display = "none";
-    document.getElementById("ALLdrawbutton").style.display = "block";
+    document.getElementById("drawbutton").style.display = "flex";
     document.getElementById("connpass").style.display = "block";
     document.getElementById("header").style.display = "none";
-
+    document.getElementById("ALLriichi_button").style.display = "block";
+    document.getElementById("header_info").style.display = "flex";
+    header_info(); //ヘッダー更新
+    start_voice();
+    pointdisplay();
     dice_value = 0;
 }
 
 
 //                                           ーーーーーポイント処理ーーーーー
+function pointdisplay(){
+    document.getElementById('point1').innerHTML = point1 + "oo"; //表示
+    document.getElementById('point2').innerHTML = point2 + "oo";
+    document.getElementById('point3').innerHTML = point3 + "oo";
+    document.getElementById('point4').innerHTML = point4 + "oo";
+}
 
-document.getElementById('point1').innerHTML = point1 + "oo"; //表示
-document.getElementById('point2').innerHTML = point2 + "oo";
-document.getElementById('point3').innerHTML = point3 + "oo";
-document.getElementById('point4').innerHTML = point4 + "oo";
 
 function win(wind) { //和了処理
 
@@ -280,6 +216,12 @@ function drawbutton() {
     //流局処理書く　立直棒供託、聴牌者選択、本場どうするか＋１？
 }
 
+
+function header_info(){
+    document.getElementById('round').innerHTML = now_wind + num_wind + "局";
+    document.getElementById('honba').innerHTML = honba + "本場";
+    document.getElementById('offerPoint').innerHTML = "供託"+ offer_now +"本";
+}
 //                                           ーーーーー終了処理ーーーーー
 
 //startjudgementを０にする
@@ -299,11 +241,17 @@ function riichivoice() {
     riichi_audio.play();
 }
 
-function startvoice() {
-
-}
-
 function your_house_voice() {
     var your_house_audio = new Audio('your_house.wav');
     your_house_audio.play();
+}
+
+function takeout_voice(){
+    var takeout_voice = new Audio('takeout.wav');
+    takeout_voice.play();
+}
+
+function start_voice(){
+    var yoro_voice = new Audio('yoro.wav');
+    yoro_voice.play();
 }

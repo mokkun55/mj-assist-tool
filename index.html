@@ -1,3 +1,8 @@
+メモ次流局処理から~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -14,21 +19,21 @@
         <a>③スタートボタンを押してスタート！</a>
     </div>
     <audio id="audio" controls style="display: none;"></audio>
-    <!-- <div class="header">
-        <div class="round">X1局</div>
-        <div class="honba">x本場</div>
-        <div class="offerPoint">供託x本</div>
-    </div> -->
+    <div id="header_info" style="display: none;">
+        <div id="round"></div>
+        <div id="honba"></div>
+        <div id="offerPoint"></div>
+    </div>
 
     <div class="dicebox"> <!-- サイコロボックスゾーン関係 -->
         <div class="dicezone">
 
             <div class="ALLpoint"><!-- ここで点数処理 -->
                 <div id="rii_bou">
-                    <img src="riichi_bou.png" class="rii rii_bou1">
-                    <img src="riichi_bou.png" class="rii rii_bou2">
-                    <img src="riichi_bou.png" class="rii rii_bou3">
-                    <img src="riichi_bou.png" class="rii rii_bou4">
+                    <img src="riichi_bou.png" class="rii" id="rii_bou1">
+                    <img src="riichi_bou.png" class="rii" id="rii_bou2">
+                    <img src="riichi_bou.png" class="rii" id="rii_bou3">
+                    <img src="riichi_bou.png" class="rii" id="rii_bou4">
                 </div>
 
                 <div id="point">
@@ -44,12 +49,6 @@
                     <button class="dicebutton dicerollbutton4" type="button" onclick="dicerollbutton()">🎲</button>
                 </div>
                 <!-- 流局drawボタン -->
-                <div id="ALLdrawbutton">
-                    <!-- <button class="drawbutton drawbutton1" type="button" onclick="drawbutton()">流</button>
-                    <button class="drawbutton drawbutton2" type="button" onclick="drawbutton()">流</button>
-                    <button class="drawbutton drawbutton3" type="button" onclick="drawbutton()">流</button>
-                    <button class="drawbutton drawbutton4" type="button" onclick="drawbutton()">流</button> -->
-                </div>
 
                 <!-- リーチボタン -->
                 <div id="ALLriichi_button">
@@ -88,6 +87,11 @@
         <div class="footer">
             <button id="startbutton" onclick="startbuttom()">スタート</button>
         </div>
+
+        <div id="drawbutton">
+            <button type="button" id="d1_button" onclick="drawbutton()">流局</button>
+        </div>
+
     </div>
 
 
